@@ -48,12 +48,12 @@ public class Main extends JavaPlugin implements Listener {
 
     public void onEnable(){
 
+        this.saveDefaultConfig();
+        
         if (!setupEconomy() & getConfig().getBoolean("economy")) {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-
-        this.saveDefaultConfig();
 
         Main.mysql = new MySQLManager();
         Main.stats = new StatisticManager();
