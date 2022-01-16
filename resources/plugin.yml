@@ -1,0 +1,6 @@
+name: MSTops
+main: ru.mladey.mstops.Main
+version: 1.0
+author: MLadey for MStudio
+softdepend:
+  - HolographicDisplays

@@ -1,0 +1,119 @@
+# Автор плагина: vk.com/m.ladey
+# Версия: beta-1.0 от 16 января 2021
+# Документация: https://github.com/MLadey/MSTops
+
+mysql:
+  hostname: 127.0.0.1
+  username: test
+  password: "test"
+  database: "mstops"
+  table: "mstops"
+  port: 3306
+  options: "?useSSL=false"
+
+statistics:
+  - stat.deaths;deaths
+  - stat.mobKills;mobKills
+
+load:
+  - deaths
+
+economy: true
+bukkit: true
+update: 60
+
+permissions:
+  command: "mstops.access.command"
+
+cooldowns:
+  - "deaths;economy;duels;3"
+
+messages:
+  cooldown: "&6&l MSTops &8| &fПодождите &6&lнекоторое &fвремя, чтобы сменить голограмму!"
+  nopermission: "&c&l MSTops &8| &fУ вас нет доступа к команде &8- &c$command$"
+  loadallplayers: "&a&l MSTops &8| &fВы загрузили статистику всех игроков в базу данных!"
+
+holograms:
+  deaths:
+    lines:
+      - "&c&lТоп&r &c&lСмертников&r"
+      - "<clickable_line1>;&f[5 игроков, которые умерли больше всех]"
+      - ""
+      - "&7#1 &c&l&n<name_1>&r &8- &f&l<score_1>&r &fсмертей"
+      - "&7#2 &c&l&n<name_2>&r &8- &f&l<score_2>&r &fсмертей"
+      - "&7#3 &c&l&n<name_3>&r &8- &f&l<score_3>&r &fсмертей"
+      - "&7#4 &c&l&n<name_4>&r &8- &f&l<score_4>&r &fсмертей"
+      - "&7#5 &c&l&n<name_5>&r &8- &f&l<score_5>&r &fсмертей"
+      - ""
+      - "<clickable_line1>;&c&nКликабельная строка&r"
+      - ""
+      - "&fОбновление каждую &c&l1&r&f минуту"
+      - "ICON;IRON_SWORD"
+    settings:
+      positions: 5
+      location: "world, -164.49;62.0;148.66, 181.0;4.51"
+      type: "bukkit"
+      statistic: "deaths"
+      update: 15
+      clickable:
+        line1:
+          - "change;economy"
+          - "message;&c&l MSTops &8| &fВы переключили страницу &8- &ceconomy"
+  economy:
+    lines:
+      - "&e&lТоп&r &e&lБогачей&r"
+      - "&f[5 игроков, у которых больше всего денег]"
+      - ""
+      - "&7#1 &e&l&n<name_1>&r &8- &f&l<score_1>&r &fмонет"
+      - "&7#2 &e&l&n<name_2>&r &8- &f&l<score_2>&r &fмонет"
+      - "&7#3 &e&l&n<name_3>&r &8- &f&l<score_3>&r &fмонет"
+      - "&7#4 &e&l&n<name_4>&r &8- &f&l<score_4>&r &fмонет"
+      - "&7#5 &e&l&n<name_5>&r &8- &f&l<score_5>&r &fмонет"
+      - ""
+      - "<clickable_line1>;&e&nКликабельная строка&r"
+      - ""
+      - "&fОбновление каждую &e&l1&r&f минуту"
+      - "ICON;GOLD_INGOT"
+    settings:
+      positions: 5
+      location: "world, -164.49;62.0;148.66, 181.0;4.51"
+      type: "economy"
+      update: 15
+      clickable:
+        line1:
+          - "change;duels"
+          - "message;&e&l MSTops &8| &fВы переключили страницу &8- &eduels"
+  duels:
+    lines:
+      - "&b&lТоп&r &b&lДуэлянтов&r"
+      - "&f[5 игроков, у которых больше всего денег]"
+      - ""
+      - "&7#1 &b&l&n<name_1>&r &8- &f&l<score_1>&r &fпобед"
+      - "&7#2 &b&l&n<name_2>&r &8- &f&l<score_2>&r &fпобед"
+      - "&7#3 &b&l&n<name_3>&r &8- &f&l<score_3>&r &fпобед"
+      - "&7#4 &b&l&n<name_4>&r &8- &f&l<score_4>&r &fпобед"
+      - "&7#5 &b&l&n<name_5>&r &8- &f&l<score_5>&r &fпобед"
+      - ""
+      - "<clickable_line1>;&b&nКликабельная строка&r"
+      - ""
+      - "&fОбновление каждую &b&l1&r&f минуту"
+      - "ICON;BOW"
+    settings:
+      mysql:
+        hostname: 127.0.0.1
+        username: test
+        password: "test"
+        database: "rexstats"
+        table: "grief1"
+        port: 3306
+        options: "?useSSL=false"
+        column_name: "username"
+        column_score: "rwins"
+      positions: 5
+      location: "world, -164.49;62.0;148.66, 181.0;4.51"
+      type: "mysql"
+      update: 15
+      clickable:
+        line1:
+          - "change;deaths"
+          - "message;&b&l MSTops &8| &fВы переключили страницу &8- &bdeaths"
