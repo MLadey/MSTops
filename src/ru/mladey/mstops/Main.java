@@ -60,25 +60,30 @@ public class Main extends JavaPlugin implements Listener {
         Main.tops = new TopsManager();
         Main.otherMySQL = new OtherMySQLManager();
 
-        if(getConfig().getBoolean("economy") || getConfig().getBoolean("bukkit")){
-            tops.createDatabase();
-        }
-
-        getServer().getPluginManager().registerEvents(new StatisticHandler(), this);
-
-        CommandRegister.reg(this, new MSTopsCommand(), new String[]{"mstops", "tops"}, "Загрузка всех игроков в базу плагина", "/mstops");
         Main.tops.voidHolograms();
 
-        new BukkitRunnable() {
 
-            public void run() {
+        if(getConfig().getBoolean("economy") || getConfig().getBoolean("bukkit")) {
 
-                Main.stats.updateOnlinePlayers();
-                return;
+            tops.createDatabase();
+            getServer().getPluginManager().registerEvents(new StatisticHandler(), this);
+            CommandRegister.reg(this, new MSTopsCommand(), new String[]{"mstops", "tops"}, "Загрузка всех игроков в базу плагина", "/mstops");
 
-            }
+            new BukkitRunnable() {
 
-        }.runTaskTimer(Main.getPlugin(), 0, getConfig().getInt("update") * 20);
+                public void run() {
+
+                    Main.stats.updateOnlinePlayers();
+                    return;
+
+                }
+
+            }.runTaskTimer(Main.getPlugin(), 0, getConfig().getInt("update") * 20);
+
+        }
+
+        Main.tops.voidHolograms();
+        return;
 
     }
 
