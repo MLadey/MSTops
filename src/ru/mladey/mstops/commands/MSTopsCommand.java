@@ -14,9 +14,9 @@ public class MSTopsCommand implements CommandExecutor {
         FileConfiguration cfg = Main.getPlugin().getConfig();
 
         if(!sender.hasPermission(cfg.getString("permissions.command"))){
-            sender.sendMessage(cfg.getString("messages.nopermission"
-                  .replace("$alias$", alias)
-                  .replace("$player$", sender.getName()))
+            sender.sendMessage(cfg.getString("messages.nopermission")
+                  .replace("$command$", "/" + alias)
+                  .replace("$player$", sender.getName())
                   .replace("&", "§"));
             return true;
         }
