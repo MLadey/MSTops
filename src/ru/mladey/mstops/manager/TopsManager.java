@@ -81,6 +81,8 @@ public class TopsManager {
 
        }
 
+       return;
+
     }
 
     public void startUpdater(String name){
@@ -279,13 +281,13 @@ public class TopsManager {
 
             if(line.contains("ICON;")){
 
-                hologram.appendItemLine(new ItemStack(Material.getMaterial(line.replace("ICON;", "")), 1));
+                ItemLine itemLine = hologram.appendItemLine(new ItemStack(Material.getMaterial(line.replace("ICON;", "")), 1));
 
             }
 
             if(!line.contains("ICON;") & !line.contains("clickable")){
 
-                hologram.appendTextLine(setPlaceholders(tops, line));
+                TextLine textLine = hologram.appendTextLine(setPlaceholders(tops, line));
 
             }
 

@@ -60,9 +60,6 @@ public class Main extends JavaPlugin implements Listener {
         Main.tops = new TopsManager();
         Main.otherMySQL = new OtherMySQLManager();
 
-        Main.tops.voidHolograms();
-
-
         if(getConfig().getBoolean("economy") || getConfig().getBoolean("bukkit")) {
 
             tops.createDatabase();
